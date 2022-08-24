@@ -24,7 +24,7 @@ public class PruebaSistemaNomina {
 		empleados[2]= empleadoPorComision;
 		empleados[3]= empleadoBaseMasComision;
 		
-		System.out.println("\nEmpleados procesados de forma polimorficamente y esto que agrego es para verlo en git.");
+		System.out.println("\nEmpleados procesados de forma polimorficamente ahora poder verlo en git.");
 		
 		for(Empleado empleadoActual : empleados) 
 		{
