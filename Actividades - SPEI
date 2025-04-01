@@ -1,0 +1,47 @@
+=== Bancoopel / SPEI Puesto: Analista Responsabilidades === 
+
+1.- Gestión del proyecto DiMo altas bajas y consultas (SPS, aplicación java y servicios web).
+Seguimiento del proyecto Dimo para alta, baja y consultas, utilización de 3 SPS y 2 servicios web y una tabla de BD
+Se utilizan 2 servidores linux uno para desplegar el .jar y el servidor donde vive el h2h que es quien realiza la integración del negocio y el core bancario.
+El proveedor manda el componente y validamos el correcto funcionamiento mediante logs en linux y sus correspondientes clases en java y BD.
+
+2.- Revisión de logs para las diferentes instancias (Principal y Gemelo)
+Son 4 logs
+	1.- Logs de comunicacion --> Adapter.log (Servicio del SPEI).
+	2.- AdapterCEP.log (Emisión de CDAS (Comprobantes electronicos de pago) se visualiza la etiqueta packCDA (arma todas la operaciones en un paquete) y AcuseReciboCEP(El envio de la confirmación por BX del paquete armado)).
+	3.- Logs de negocio -->  spei-amp.log (Logs del front de la aplicación EF SPEI) / Server.log Se observa el deploy de los componentes 		
+    4.-	h2h.log --> Componente que integra la comunicacion entre capa de negocio y el core bancario.
+		*war(spei/negocio) Modulos de operación general para SPEI 
+		*ear(h2h) Plugins nuevas funcionalidades que se le integran a la app por requerimientos del usuario
+
+3.- Revisión y adecuación de SPS en PostgreSQL, Informix
+Revisamos el flujo de la operación y en caso de requerir modificación lo hacemos, validamos nuevaemente y en caso de ser satisfactorio realizamos la busqueda de vobo correspondientes y aplicamos en producción mediante un ...
+
+4.- Coordinación en liberaciones de versiones SPEI en producción.
+Normalmente se realiza la implementacion de la version en beta y sus casos de prueba mediante una matriz de validaciones del flujo correspondiente y en caso de estar ok, se gestiona el cambio en produccion con la aprobación del equipo de operación.
+El cambio a produccion se realiza con una matriz de seguimiento y con apoyo del equipo necesario (BD, servidores, operaciones,monitoreo) y una ventana de tiempo con Banxico.
+
+5.- Ejecución de pruebas de certificaciones SPEI para cumplimiento de temas transitorios y normativos.
+	Se recibe la orden para la certificación 
+	Se manda cedula de registro 
+	Se revisa el guion de la prueba
+	Se realiza la configuración corresopndiente y se preparan los insumos
+	Se realizan previamente pruebas con el equipo de operaciones/medios de pago
+	Se prepara meet para la prueba 
+	Se realiza la ejecución del guion con el equipo operaciones/medios de pago y contraroria en ambiente beta
+	
+	Algunas pruebas son importantes para el correcto funcionamiento de la version que se tienen en producción
+	Para la validación con Banxico
+	Algunas como los transitorios son obligatorios por nuevos requerimientos por banco de mexico como la integración de CDAS version 4 (por que ya se le integran nuevos campos en la cadena (nombre institucion, fecha, datos ordenandte, institucion, beneficiario, rfc etc)). COA(Cleinte de operacion Alterna - Sistema de contingecia de Banco de Mexico/para spei) y POA( sistema de contingecia de banco de mexico)
+
+	Prueba gremial de verificación SPEI por actualización de infraestructura_1.  -- La pasamos
+	Prueba gremial de verificación Dimo por actualización de infraestructura_1   -- no la pasamos
+	Prueba de certificación SPEI CERO. 2025-1.									 -- no la pasamos
+	Prueba de certificación SPEI CDA versión 4. 2025-1 (Funcionalidades):        -- La pasamos
+	Prueba de certificación Dimo, 2024-1.										 -- no la pasamos
+
+6.- Uso de servidor de aplicaciones jboss y weblogic
+
+7.- Análisis y resolución de Incidencias SPEI.
+
+8.- Documentación de procesos de incidencias SPEI, CoDi y DiMO
